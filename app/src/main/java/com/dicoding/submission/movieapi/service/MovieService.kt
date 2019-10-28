@@ -11,7 +11,7 @@ import kotlin.collections.ArrayList
 interface MovieService {
 
     @GET("movie")
-    fun getMovie(@Query("api_key") apiKey: String) : LiveData<ArrayList<MovieBase>>
+    fun getMovie(@Query("api_key") apiKey: String) : Call<MovieBase>
 
     @GET("tv")
     fun getTvShow(@Query("api_key") apiKey: String) : Call<TvShowBase>

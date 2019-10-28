@@ -4,15 +4,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.dicoding.submission.movieapi.R
 import com.dicoding.submission.movieapi.model.MovieBase
+import com.dicoding.submission.movieapi.model.MovieResults
+import com.dicoding.submission.movieapi.utils.AppConst.IMAGE_URL
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
-class MovieAdapter(private var movieList: ArrayList<MovieBase>) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
+class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
-    fun setData(items: ArrayList<MovieBase>) {
-        movieList.clear()
-        movieList.addAll(items)
+    private var movie =  MovieBase()
+
+    fun setData(items: MovieBase) {
+        movie = items
         notifyDataSetChanged()
     }
 
@@ -21,19 +25,20 @@ class MovieAdapter(private var movieList: ArrayList<MovieBase>) : RecyclerView.A
         return MovieViewHolder(view)
     }
 
-    override fun getItemCount(): Int = movieList.size
+    override fun getItemCount(): Int = movie.results.size
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.bind(movieList[position], position)
+        holder.bind(movie.results[position])
     }
 
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(movieItem: MovieBase, position: Int) {
+        fun bind(movieItem: MovieResults) {
             with(itemView) {
-                movie_title.text = movieItem.results[position].title
-                movie_overview.text = movieItem.results[position].overview
-                movie_score.text = movieItem.results[position].vote_count.toString()
+                movie_title.text = movieItem.title
+                movie_overview.text = movieItem.overview
+                movie_score.text = movieItem.vote_count.toString()
+                Glide.with(context).load("${IMAGE_URL}/w185${movieItem.poster_path}").into(movie_poster)
             }
         }
     }

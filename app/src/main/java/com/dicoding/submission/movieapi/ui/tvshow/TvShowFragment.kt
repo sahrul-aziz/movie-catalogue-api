@@ -22,10 +22,9 @@ class TvShowFragment : Fragment() {
         tvShowViewModel =
             ViewModelProviders.of(this).get(TvShowViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_tv_show, container, false)
-        val textView: TextView = root.findViewById(R.id.text_dashboard)
-        tvShowViewModel.text.observe(this, Observer {
-            textView.text = it
-        })
+//        tvShowViewModel.text.observe(this, Observer {
+//            textView.text = it
+//        })
         return root
     }
 }
