@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginTop="4dp"
+    android:layout_marginBottom="4dp"
+    card_view:cardCornerRadius="4dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/tv_show_poster"
+            android:layout_width="110dp"
+            android:layout_height="150dp"
+            android:scaleType="fitXY"
+            android:contentDescription="@string/tv_show_poster"
+            tools:src="@color/colorAccent"/>
+
+        <TextView
+            android:id="@+id/tv_show_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tv_show_poster"
+            android:layout_marginStart="8dp"
+            android:textStyle="bold"
+            tools:text="@string/tv_show_title"/>
+
+        <TextView
+            android:id="@+id/tv_show_score"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tv_show_poster"
+            android:layout_below="@id/tv_show_title"
+            android:layout_marginStart="8dp"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            tools:text="@string/score"/>
+
+        <TextView
+            android:id="@+id/tv_show_overview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/tv_show_poster"
+            android:layout_below="@id/tv_show_score"
+            android:layout_marginStart="8dp"
+            android:maxLines="6"
+            android:textSize="12sp"
+            tools:text="Movie Overview"/>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

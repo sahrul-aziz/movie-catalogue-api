@@ -1,6 +1,5 @@
 package com.dicoding.submission.movieapi.adapter
 
-import android.graphics.Movie
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,9 +8,7 @@ import com.dicoding.submission.movieapi.R
 import com.dicoding.submission.movieapi.model.MovieBase
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
-class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
-
-    private val movieList = ArrayList<MovieBase>()
+class MovieAdapter(private var movieList: ArrayList<MovieBase>) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
 
     fun setData(items: ArrayList<MovieBase>) {
         movieList.clear()
@@ -27,14 +24,16 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
     override fun getItemCount(): Int = movieList.size
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.bind(movieList[position])
+        holder.bind(movieList[position], position)
     }
 
 
     inner class MovieViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        fun bind(movieItem: MovieBase) {
+        fun bind(movieItem: MovieBase, position: Int) {
             with(itemView) {
-                text_test.text = movieItem.total_pages.toString()
+                movie_title.text = movieItem.results[position].title
+                movie_overview.text = movieItem.results[position].overview
+                movie_score.text = movieItem.results[position].vote_count.toString()
             }
         }
     }
