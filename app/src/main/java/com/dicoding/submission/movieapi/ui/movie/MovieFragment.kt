@@ -48,9 +48,9 @@ class MovieFragment : Fragment() {
 
     private fun showLoading(state: Boolean) {
         if (state) {
-            root.progressBar.visibility = View.VISIBLE
+            root.progressBarMovie.visibility = View.VISIBLE
         } else {
-            root.progressBar.visibility = View.GONE
+            root.progressBarMovie.visibility = View.GONE
         }
     }
 

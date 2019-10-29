@@ -1,6 +1,5 @@
 package com.dicoding.submission.movieapi.ui.movie
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dicoding.submission.movieapi.model.MovieBase
@@ -17,6 +16,7 @@ import java.util.concurrent.TimeUnit
 
 
 class MovieViewModel : ViewModel() {
+
 
     val listMovie = MutableLiveData<MovieBase>()
 

@@ -37,10 +37,9 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
             with(itemView) {
                 movie_title.text = movieItem.title
                 movie_overview.text = movieItem.overview
-                movie_score.text = movieItem.vote_count.toString()
+                movie_score.text = movieItem.vote_average.toString()
                 Glide.with(context).load("${IMAGE_URL}/w185${movieItem.poster_path}").into(movie_poster)
             }
         }
     }
-
 }

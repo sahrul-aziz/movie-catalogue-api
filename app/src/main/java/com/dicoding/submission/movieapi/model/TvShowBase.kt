@@ -5,8 +5,8 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class TvShowBase(
-    val page : Int,
-    val total_results : Int,
-    val total_pages : Int,
-    val results : List<TvShowResults>
+    val page : Int = 0,
+    val total_results : Int = 0,
+    val total_pages : Int = 0,
+    val results : List<TvShowResults> = listOf()
 ) : Parcelable
