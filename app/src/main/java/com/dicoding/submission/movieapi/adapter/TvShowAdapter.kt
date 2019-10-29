@@ -1,5 +1,6 @@
 package com.dicoding.submission.movieapi.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.dicoding.submission.movieapi.R
 import com.dicoding.submission.movieapi.model.TvShowBase
 import com.dicoding.submission.movieapi.model.TvShowResults
+import com.dicoding.submission.movieapi.ui.TvShowDetailActivity
 import com.dicoding.submission.movieapi.utils.AppConst.IMAGE_URL
 import kotlinx.android.synthetic.main.tv_show_list_item.view.*
 
@@ -39,6 +41,11 @@ class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
                 tv_show_overview.text = tvShowItem.overview
                 tv_show_score.text = tvShowItem.vote_average.toString()
                 Glide.with(context).load("${IMAGE_URL}/w185${tvShowItem.poster_path}").into(tv_show_poster)
+                setOnClickListener {
+                    val intent = Intent(itemView.context, TvShowDetailActivity::class.java)
+                    intent.putExtra("tvShow", tvShowItem)
+                    itemView.context.startActivity(intent)
+                }
             }
         }
     }

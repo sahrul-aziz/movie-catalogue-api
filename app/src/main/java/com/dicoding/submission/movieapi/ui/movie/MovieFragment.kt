@@ -24,7 +24,7 @@ class MovieFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         root = inflater.inflate(R.layout.fragment_movie, container, false)
-        val movieAdapter = MovieAdapter()
+        movieAdapter = MovieAdapter()
         movieAdapter.notifyDataSetChanged()
 
         root.rv_movie.layoutManager = LinearLayoutManager(this.context)

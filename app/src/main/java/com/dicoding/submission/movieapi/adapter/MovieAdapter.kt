@@ -1,5 +1,6 @@
 package com.dicoding.submission.movieapi.adapter
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import com.bumptech.glide.Glide
 import com.dicoding.submission.movieapi.R
 import com.dicoding.submission.movieapi.model.MovieBase
 import com.dicoding.submission.movieapi.model.MovieResults
+import com.dicoding.submission.movieapi.ui.MovieDetailActivity
 import com.dicoding.submission.movieapi.utils.AppConst.IMAGE_URL
 import kotlinx.android.synthetic.main.movie_list_item.view.*
 
@@ -39,6 +41,11 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
                 movie_overview.text = movieItem.overview
                 movie_score.text = movieItem.vote_average.toString()
                 Glide.with(context).load("${IMAGE_URL}/w185${movieItem.poster_path}").into(movie_poster)
+                setOnClickListener {
+                    val intent = Intent(itemView.context, MovieDetailActivity::class.java)
+                    intent.putExtra("movie", movieItem)
+                    itemView.context.startActivity(intent)
+                }
             }
         }
     }
