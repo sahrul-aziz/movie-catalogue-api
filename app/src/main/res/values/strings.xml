@@ -4,7 +4,8 @@
     <string name="title_movie">Movie</string>
     <string name="title_tv_show">TV Show</string>
     <string name="change_language_settings">Change Language Settings</string>
-    <string name="no_movie">Oops, we got no movie here!</string>
+    <string name="no_movie">Oops, we got no Movie here!</string>
+    <string name="no_tv_show">Oops, we got no TV Show here!</string>
 
     <string name="movie_poster">Movie Poster</string>
     <string name="movie_title">Movie Title</string>

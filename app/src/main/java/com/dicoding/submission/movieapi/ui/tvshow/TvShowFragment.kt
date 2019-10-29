@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.submission.movieapi.R
 import com.dicoding.submission.movieapi.adapter.TvShowAdapter
+import com.dicoding.submission.movieapi.model.ErrorResponse
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_tv_show.view.*
 
 class TvShowFragment : Fragment() {
@@ -44,6 +46,14 @@ class TvShowFragment : Fragment() {
             }
             showLoading(false)
         })
+
+        tvShowViewModel.errorResponse.observe(this, Observer {
+            if (it != null) {
+                showSnackbar(it)
+                tvShowViewModel.errorResponse.value = null
+            }
+        })
+
         tvShowViewModel.retrieveTvShow()
         return root
     }
@@ -54,5 +64,10 @@ class TvShowFragment : Fragment() {
         } else {
             root.progressBarTvShow.visibility = View.GONE
         }
+    }
+
+
+    private fun showSnackbar(errorResponse: ErrorResponse){
+        Snackbar.make(root, "Error [code: ${errorResponse.statusCode}]: ${errorResponse.statusMessage}", Snackbar.LENGTH_SHORT).show()
     }
 }

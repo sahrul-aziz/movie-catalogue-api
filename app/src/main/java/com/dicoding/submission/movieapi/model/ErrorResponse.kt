@@ -1,7 +1,12 @@
 package com.dicoding.submission.movieapi.model
 
+import com.google.gson.annotations.SerializedName
+
 data class ErrorResponse(
-    private var statusCode: Int = 0,
-    private var statusMessage: String = "",
-    private var success: Boolean = false
+    @SerializedName("status_code")
+    var statusCode: Int = 0,
+    @SerializedName("status_message")
+    var statusMessage: String = "",
+    @SerializedName("success")
+    var success: Boolean = false
 )

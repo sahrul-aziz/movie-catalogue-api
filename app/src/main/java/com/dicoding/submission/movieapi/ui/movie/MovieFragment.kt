@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.submission.movieapi.R
 import com.dicoding.submission.movieapi.adapter.MovieAdapter
+import com.dicoding.submission.movieapi.model.ErrorResponse
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_movie.view.*
 
 class MovieFragment : Fragment() {
@@ -42,6 +44,14 @@ class MovieFragment : Fragment() {
             }
             showLoading(false)
         })
+
+        movieViewModel.errorResponse.observe(this, Observer {
+            if (it != null) {
+                showSnackbar(it)
+                movieViewModel.errorResponse.value = null
+            }
+        })
+
         movieViewModel.retrieveMovie()
         return root
     }
@@ -52,6 +62,10 @@ class MovieFragment : Fragment() {
         } else {
             root.progressBarMovie.visibility = View.GONE
         }
+    }
+
+    private fun showSnackbar(errorResponse: ErrorResponse){
+        Snackbar.make(root, "Error [code: ${errorResponse.statusCode}]: ${errorResponse.statusMessage}", Snackbar.LENGTH_SHORT).show()
     }
 
 }
