@@ -6,6 +6,7 @@
     <string name="change_language_settings">Change Language Settings</string>
     <string name="no_movie">Oops, we got no Movie here!</string>
     <string name="no_tv_show">Oops, we got no TV Show here!</string>
+    <string name="something_went_wrong">Something went wrong, please try again later</string>
 
     <string name="movie_poster">Movie Poster</string>
     <string name="movie_title">Movie Title</string>
@@ -14,7 +15,7 @@
     <string name="score">Score</string>
     <string name="overview">Overview</string>
     <string name="cast">Cast</string>
-    <string name="release_year_label">Release year: </string>
+    <string name="release_date_label">Release date: </string>
     <string name="runtime_label">Runtime: </string>
     <string name="runtime_placeholder">1h 52m</string>
     <string name="year_placeholder">2018</string>

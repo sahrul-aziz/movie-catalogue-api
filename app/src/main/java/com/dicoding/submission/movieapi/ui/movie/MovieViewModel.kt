@@ -8,7 +8,6 @@ import com.dicoding.submission.movieapi.service.MovieService
 import com.dicoding.submission.movieapi.utils.AppConst.API_KEY
 import com.dicoding.submission.movieapi.utils.AppConst.BASE_URL
 import com.google.gson.Gson
-import com.google.gson.GsonBuilder
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,7 +29,12 @@ class MovieViewModel : ViewModel() {
         service.getMovie(API_KEY).enqueue(object : Callback<MovieBase> {
             override fun onFailure(call: Call<MovieBase>, t: Throwable) {
                 listMovie.postValue(null)
-                errorResponse.postValue(ErrorResponse())
+                val error = ErrorResponse(
+                    0,
+                    "Something went wrong, please try again later!",
+                    false
+                )
+                errorResponse.postValue(error)
             }
 
             override fun onResponse(call: Call<MovieBase>, response: Response<MovieBase>) {
@@ -43,8 +47,7 @@ class MovieViewModel : ViewModel() {
                     }
                 } else {
                     listMovie.postValue(null)
-                    val gson = Gson()
-                    val error = gson.fromJson(response.errorBody()?.string(), ErrorResponse::class.java)
+                    val error = Gson().fromJson(response.errorBody()?.string(), ErrorResponse::class.java)
                     errorResponse.postValue(error)
                 }
             }
