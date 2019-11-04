@@ -38,8 +38,13 @@ class MovieAdapter : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>() {
         fun bind(movieItem: MovieResults) {
             with(itemView) {
                 movie_title.text = movieItem.title
-                movie_overview.text = movieItem.overview
-                movie_score.text = movieItem.vote_average.toString()
+                var overview: String = resources.getString(R.string.overview_not_available)
+                if (movieItem.overview != "") {
+                    overview = movieItem.overview
+                }
+                movie_overview.text = overview
+                val score = "Score: ${movieItem.vote_average}"
+                movie_score.text = score
                 Glide.with(context).load("${IMAGE_URL}/w185${movieItem.poster_path}").into(movie_poster)
                 setOnClickListener {
                     val intent = Intent(itemView.context, MovieDetailActivity::class.java)

@@ -3,6 +3,8 @@
     <string name="app_name">Movie API</string>
     <string name="title_movie">Movie</string>
     <string name="title_tv_show">TV Show</string>
+    <string name="title_movie_detail">Detail Movie</string>
+    <string name="title_tv_show_detail">Detail TV Show</string>
     <string name="change_language_settings">Change Language Settings</string>
     <string name="no_movie">Oops, we got no Movie here!</string>
     <string name="no_tv_show">Oops, we got no TV Show here!</string>
@@ -13,11 +15,14 @@
     <string name="tv_show_poster">TV Show Poster</string>
     <string name="tv_show_title">TV Show Title</string>
     <string name="score">Score</string>
+    <string name="language_label">Language: </string>
+    <string name="language_placeholder">English</string>
     <string name="overview">Overview</string>
+    <string name="overview_not_available">Overview with this language is not available</string>
     <string name="cast">Cast</string>
     <string name="release_date_label">Release date: </string>
-    <string name="runtime_label">Runtime: </string>
-    <string name="runtime_placeholder">1h 52m</string>
+    <string name="popularity_label">Popularity: </string>
+    <string name="popularity_placeholder">5000</string>
     <string name="year_placeholder">2018</string>
 
 </resources>

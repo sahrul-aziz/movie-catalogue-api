@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Movie API</string>
-    <string name="title_movie">Movie</string>
-    <string name="title_tv_show">TV Show</string>
+    <string name="title_movie">Film</string>
+    <string name="title_tv_show">Acara TV</string>
+    <string name="title_movie_detail">Detil Film</string>
+    <string name="title_tv_show_detail">Detil Acara TV</string>
     <string name="change_language_settings">Ubah Aturan Bahasa</string>
     <string name="no_movie">Ups, tidak ada Film disini!</string>
     <string name="no_tv_show">Ups, tidak ada Acara TV disini!</string>
@@ -13,10 +15,13 @@
     <string name="tv_show_poster">Poster Acara TV</string>
     <string name="tv_show_title">Judul Acara TV</string>
     <string name="score">Nilai</string>
+    <string name="language_label">Bahasa: </string>
+    <string name="language_placeholder">Inggris</string>
     <string name="overview">Kilasan Singkat</string>
+    <string name="overview_not_available">Kilasan Singkat dalam bahasa ini tidak tersedia</string>
     <string name="cast">Pemeran</string>
     <string name="release_date_label">Tanggal rilis: </string>
-    <string name="runtime_label">Durasi: </string>
-    <string name="runtime_placeholder">1j 52m</string>
+    <string name="popularity_label">Popularitas: </string>
+    <string name="popularity_placeholder">5000</string>
     <string name="year_placeholder">2018</string>
 </resources>

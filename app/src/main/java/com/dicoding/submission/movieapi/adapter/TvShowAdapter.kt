@@ -38,8 +38,13 @@ class TvShowAdapter : RecyclerView.Adapter<TvShowAdapter.TvShowViewHolder>() {
         fun bind(tvShowItem: TvShowResults) {
             with(itemView) {
                 tv_show_title.text = tvShowItem.original_name
-                tv_show_overview.text = tvShowItem.overview
-                tv_show_score.text = tvShowItem.vote_average.toString()
+                var overview: String = resources.getString(R.string.overview_not_available)
+                if (tvShowItem.overview != "") {
+                    overview = tvShowItem.overview
+                }
+                tv_show_overview.text = overview
+                val score = "Score: ${tvShowItem.vote_average}"
+                tv_show_score.text = score
                 Glide.with(context).load("${IMAGE_URL}/w185${tvShowItem.poster_path}").into(tv_show_poster)
                 setOnClickListener {
                     val intent = Intent(itemView.context, TvShowDetailActivity::class.java)

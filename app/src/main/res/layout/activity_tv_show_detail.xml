@@ -51,25 +51,25 @@
         tools:text="@string/year_placeholder"/>
 
     <TextView
-        android:id="@+id/tv_show_detail_runtime_label"
+        android:id="@+id/tv_show_detail_popularity_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginStart="8dp"
-        android:text="@string/runtime_label"
+        android:text="@string/popularity_label"
         android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@id/tv_show_detail_poster"
         app:layout_constraintTop_toBottomOf="@id/tv_show_detail_date" />
 
     <TextView
-        android:id="@+id/tv_show_detail_runtime"
+        android:id="@+id/tv_show_detail_popularity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginStart="8dp"
-        app:layout_constraintLeft_toRightOf="@id/tv_show_detail_runtime_label"
+        app:layout_constraintLeft_toRightOf="@id/tv_show_detail_popularity_label"
         app:layout_constraintTop_toBottomOf="@id/tv_show_detail_date"
-        tools:text="@string/runtime_placeholder"/>
+        tools:text="@string/popularity_placeholder"/>
 
     <TextView
         android:id="@+id/tv_show_detail_score_label"
@@ -80,7 +80,7 @@
         android:text="@string/score"
         android:textStyle="bold"
         app:layout_constraintLeft_toRightOf="@id/tv_show_detail_poster"
-        app:layout_constraintTop_toBottomOf="@id/tv_show_detail_runtime" />
+        app:layout_constraintTop_toBottomOf="@id/tv_show_detail_popularity" />
 
     <TextView
         android:id="@+id/tv_show_detail_score"
@@ -89,8 +89,29 @@
         android:layout_marginTop="4dp"
         android:layout_marginStart="8dp"
         app:layout_constraintLeft_toRightOf="@id/tv_show_detail_score_label"
-        app:layout_constraintTop_toBottomOf="@id/tv_show_detail_runtime"
+        app:layout_constraintTop_toBottomOf="@id/tv_show_detail_popularity"
         tools:text="@string/score"/>
+
+    <TextView
+        android:id="@+id/tv_show_detail_language_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="8dp"
+        android:text="@string/language_label"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toRightOf="@id/tv_show_detail_poster"
+        app:layout_constraintTop_toBottomOf="@id/tv_show_detail_score" />
+
+    <TextView
+        android:id="@+id/tv_show_detail_language"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintLeft_toRightOf="@id/tv_show_detail_language_label"
+        app:layout_constraintTop_toBottomOf="@id/tv_show_detail_score"
+        tools:text="@string/language_placeholder"/>
 
     <TextView
         android:id="@+id/tv_show_detail_overview_label"
@@ -111,25 +132,5 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_show_detail_overview_label"
         tools:text="@string/overview"/>
-
-    <TextView
-        android:id="@+id/tv_show_detail_cast_label"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:text="@string/cast"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_show_detail_overview" />
-
-    <TextView
-        android:id="@+id/tv_show_detail_cast"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_show_detail_cast_label"
-        tools:text="@string/cast" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,9 +9,9 @@ import retrofit2.http.Query
 interface MovieService {
 
     @GET("movie")
-    fun getMovie(@Query("api_key") apiKey: String) : Call<MovieBase>
+    fun getMovie(@Query("api_key") apiKey: String, @Query("language") language: String) : Call<MovieBase>
 
     @GET("tv")
-    fun getTvShow(@Query("api_key") apiKey: String) : Call<TvShowBase>
+    fun getTvShow(@Query("api_key") apiKey: String, @Query("language") language: String) : Call<TvShowBase>
 
 }

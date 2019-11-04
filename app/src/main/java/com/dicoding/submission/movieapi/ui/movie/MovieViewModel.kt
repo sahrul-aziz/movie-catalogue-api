@@ -13,6 +13,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 
 class MovieViewModel : ViewModel() {
 
@@ -25,8 +26,11 @@ class MovieViewModel : ViewModel() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
+        var locale = Locale.getDefault().toString()
+        locale = locale.replace("_", "-")
+
         val service = retrofit.create(MovieService::class.java)
-        service.getMovie(API_KEY).enqueue(object : Callback<MovieBase> {
+        service.getMovie(API_KEY, locale).enqueue(object : Callback<MovieBase> {
             override fun onFailure(call: Call<MovieBase>, t: Throwable) {
                 listMovie.postValue(null)
                 val error = ErrorResponse(

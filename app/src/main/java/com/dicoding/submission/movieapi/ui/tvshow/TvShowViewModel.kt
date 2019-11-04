@@ -1,5 +1,6 @@
 package com.dicoding.submission.movieapi.ui.tvshow
 
+import android.os.Build
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.dicoding.submission.movieapi.model.ErrorResponse
@@ -12,6 +13,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 
 class TvShowViewModel : ViewModel() {
 
@@ -24,8 +26,11 @@ class TvShowViewModel : ViewModel() {
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
+        var locale = Locale.getDefault().toString()
+        locale = locale.replace("_", "-")
+
         val service = retrofit.create(MovieService::class.java)
-        service.getTvShow(AppConst.API_KEY).enqueue(object : Callback<TvShowBase> {
+        service.getTvShow(AppConst.API_KEY, locale).enqueue(object : Callback<TvShowBase> {
             override fun onFailure(call: Call<TvShowBase>, t: Throwable) {
                 listTvShow.postValue(null)
                 val error = ErrorResponse(
