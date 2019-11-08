@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.SavedStateVMFactory
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.submission.movieapi.R
@@ -35,7 +36,7 @@ class TvShowFragment : Fragment() {
         showLoading(true)
 
         tvShowViewModel =
-            ViewModelProviders.of(this).get(TvShowViewModel::class.java)
+            ViewModelProviders.of(this, SavedStateVMFactory(this@TvShowFragment)).get(TvShowViewModel::class.java)
         tvShowViewModel.listTvShow.observe(this, Observer {
             if (it != null) {
                 root.tv_show_empty.visibility = View.GONE
@@ -54,8 +55,19 @@ class TvShowFragment : Fragment() {
             }
         })
 
-        tvShowViewModel.retrieveTvShow()
+        if (tvShowViewModel.getTvShow() == null) {
+            showLoading(true)
+            tvShowViewModel.retrieveTvShow()
+        } else {
+            val tvShowBase = tvShowViewModel.getTvShow()
+            tvShowBase?.let { tvShowAdapter.setData(it) }
+        }
         return root
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        tvShowViewModel.saveTvShow(tvShowViewModel.listTvShow.value)
     }
 
     private fun showLoading(state: Boolean) {

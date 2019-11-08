@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.SavedStateVMFactory
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.submission.movieapi.R
@@ -32,8 +33,7 @@ class MovieFragment : Fragment() {
         root.rv_movie.layoutManager = LinearLayoutManager(this.context)
         root.rv_movie.adapter = movieAdapter
 
-        showLoading(true)
-        movieViewModel = ViewModelProviders.of(this).get(MovieViewModel::class.java)
+        movieViewModel = ViewModelProviders.of(this, SavedStateVMFactory(this@MovieFragment)).get(MovieViewModel::class.java)
         movieViewModel.listMovie.observe(this, Observer {
             if (it != null) {
                 root.movie_empty.visibility = View.GONE
@@ -52,8 +52,19 @@ class MovieFragment : Fragment() {
             }
         })
 
-        movieViewModel.retrieveMovie()
+        if (movieViewModel.getMovie() == null) {
+            showLoading(true)
+            movieViewModel.retrieveMovie()
+        } else {
+            val movieBase = movieViewModel.getMovie()
+            movieBase?.let { movieAdapter.setData(it) }
+        }
         return root
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        movieViewModel.saveMovie(movieViewModel.listMovie.value)
     }
 
     private fun showLoading(state: Boolean) {

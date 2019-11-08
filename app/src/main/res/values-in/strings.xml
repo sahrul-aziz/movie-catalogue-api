@@ -7,8 +7,6 @@
     <string name="title_tv_show_detail">Detil Acara TV</string>
     <string name="change_language_settings">Ubah Aturan Bahasa</string>
     <string name="no_movie">Ups, tidak ada Film disini!</string>
-    <string name="no_tv_show">Ups, tidak ada Acara TV disini!</string>
-    <string name="something_went_wrong">Terjadi kesalahan, silahkan coba lagi nanti</string>
 
     <string name="movie_poster">Poster Film</string>
     <string name="movie_title">Judul Film</string>
@@ -19,7 +17,6 @@
     <string name="language_placeholder">Inggris</string>
     <string name="overview">Kilasan Singkat</string>
     <string name="overview_not_available">Kilasan Singkat dalam bahasa ini tidak tersedia</string>
-    <string name="cast">Pemeran</string>
     <string name="release_date_label">Tanggal rilis: </string>
     <string name="popularity_label">Popularitas: </string>
     <string name="popularity_placeholder">5000</string>

@@ -1,12 +1,14 @@
 package com.dicoding.submission.movieapi.ui.tvshow
 
-import android.os.Build
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.dicoding.submission.movieapi.BuildConfig
 import com.dicoding.submission.movieapi.model.ErrorResponse
 import com.dicoding.submission.movieapi.model.TvShowBase
 import com.dicoding.submission.movieapi.service.MovieService
 import com.dicoding.submission.movieapi.utils.AppConst
+import com.dicoding.submission.movieapi.utils.AppConst.TV_SHOW_KEY
 import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,7 +17,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
-class TvShowViewModel : ViewModel() {
+class TvShowViewModel(private val state: SavedStateHandle) : ViewModel() {
 
     val listTvShow = MutableLiveData<TvShowBase>()
     var errorResponse = MutableLiveData<ErrorResponse>()
@@ -30,7 +32,7 @@ class TvShowViewModel : ViewModel() {
         locale = locale.replace("_", "-")
 
         val service = retrofit.create(MovieService::class.java)
-        service.getTvShow(AppConst.API_KEY, locale).enqueue(object : Callback<TvShowBase> {
+        service.getTvShow(BuildConfig.API_KEY, locale).enqueue(object : Callback<TvShowBase> {
             override fun onFailure(call: Call<TvShowBase>, t: Throwable) {
                 listTvShow.postValue(null)
                 val error = ErrorResponse(
@@ -54,5 +56,13 @@ class TvShowViewModel : ViewModel() {
                 }
             }
         })
+    }
+
+    fun getTvShow(): TvShowBase? {
+        return state.get(TV_SHOW_KEY)
+    }
+
+    fun saveTvShow(tvShow: TvShowBase?) {
+        state.set(TV_SHOW_KEY, tvShow)
     }
 }

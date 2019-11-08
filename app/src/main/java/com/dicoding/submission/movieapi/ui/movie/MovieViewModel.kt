@@ -1,12 +1,14 @@
 package com.dicoding.submission.movieapi.ui.movie
 
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
+import com.dicoding.submission.movieapi.BuildConfig
 import com.dicoding.submission.movieapi.model.ErrorResponse
 import com.dicoding.submission.movieapi.model.MovieBase
 import com.dicoding.submission.movieapi.service.MovieService
-import com.dicoding.submission.movieapi.utils.AppConst.API_KEY
 import com.dicoding.submission.movieapi.utils.AppConst.BASE_URL
+import com.dicoding.submission.movieapi.utils.AppConst.MOVIE_KEY
 import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
@@ -15,7 +17,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
-class MovieViewModel : ViewModel() {
+class MovieViewModel(private val state: SavedStateHandle) : ViewModel() {
 
     val listMovie = MutableLiveData<MovieBase>()
     var errorResponse = MutableLiveData<ErrorResponse>()
@@ -30,7 +32,7 @@ class MovieViewModel : ViewModel() {
         locale = locale.replace("_", "-")
 
         val service = retrofit.create(MovieService::class.java)
-        service.getMovie(API_KEY, locale).enqueue(object : Callback<MovieBase> {
+        service.getMovie(BuildConfig.API_KEY, locale).enqueue(object : Callback<MovieBase> {
             override fun onFailure(call: Call<MovieBase>, t: Throwable) {
                 listMovie.postValue(null)
                 val error = ErrorResponse(
@@ -56,5 +58,13 @@ class MovieViewModel : ViewModel() {
                 }
             }
         })
+    }
+
+    fun getMovie(): MovieBase? {
+        return state.get(MOVIE_KEY)
+    }
+
+    fun saveMovie(movie: MovieBase?) {
+        state.set(MOVIE_KEY, movie)
     }
 }

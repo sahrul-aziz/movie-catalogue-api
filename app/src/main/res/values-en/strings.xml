@@ -7,8 +7,6 @@
     <string name="title_tv_show_detail">Detail TV Show</string>
     <string name="change_language_settings">Change Language Settings</string>
     <string name="no_movie">Oops, we got no Movie here!</string>
-    <string name="no_tv_show">Oops, we got no TV Show here!</string>
-    <string name="something_went_wrong">Something went wrong, please try again later</string>
 
     <string name="movie_poster">Movie Poster</string>
     <string name="movie_title">Movie Title</string>
@@ -19,7 +17,6 @@
     <string name="language_placeholder">English</string>
     <string name="overview">Overview</string>
     <string name="overview_not_available">Overview with this language is not available</string>
-    <string name="cast">Cast</string>
     <string name="release_date_label">Release date: </string>
     <string name="popularity_label">Popularity: </string>
     <string name="popularity_placeholder">5000</string>
